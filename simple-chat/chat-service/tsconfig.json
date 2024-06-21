@@ -1,35 +1,4 @@
+// bit-generated-typescript-config
 {
-  "compilerOptions": {
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.Iterable"
-    ],
-    "target": "ES2022",
-    "module": "NodeNext",
-    "jsx": "react-jsx",
-    "declaration": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "allowJs": true,
-    "outDir": "./dist",
-    "rootDir": "../.."
-  },
-  "exclude": [
-    "../../simple-chat/chat-service/artifacts",
-    "../../simple-chat/chat-service/public",
-    "../../simple-chat/chat-service/dist",
-    "../../simple-chat/chat-service/node_modules",
-    "../../simple-chat/chat-service/package.json",
-    "../../simple-chat/chat-service/./dist"
-  ],
-  "include": [
-    "../../simple-chat/chat-service/**/*",
-    "../../simple-chat/chat-service/**/*.json",
-    "../../simple-chat/chat-service/.mocharc.cjs",
-    "./global-types/**/*"
-  ]
+  "extends": "./../../node_modules/.cache/tsconfig.bit.012b67c1b554a36476197ef49b2cd9a6c91480bc.json"
 }
