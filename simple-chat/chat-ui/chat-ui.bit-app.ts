@@ -9,7 +9,7 @@ export default ViteReact.from({
   /**
    * determine whether to use ssr mode or not.
    */
-  ssr: false,
+  ssr: true,
 
   /**
    * vite config for the browser target.
@@ -48,7 +48,7 @@ export default ViteReact.from({
   /**
    * peer dependencies to alias from the app component dependencies.
    * ensures a single instance for the dependency across the app graph.
-  */
+   */
   // peers: [
   //   'react',
   //   'react-dom',
