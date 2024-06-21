@@ -1,0 +1,37 @@
+---
+labels: ['chat-service', 'express', 'server', 'microservice']
+description: 'chat service'
+---
+
+A chat-service component. Provides a RESTful API for the platform.
+
+## Run the server 
+
+Import the platform and use the it in your workspace:
+
+```bash
+bit use chat-service
+```
+
+Run the server:
+```bash
+bit run chat-service
+```
+
+## Compose to your platform
+
+You can compose the server to a Platform app. Use the platform application type in a Bit app `my-platform.bit-app.ts` and include your server:
+```ts
+import { Platform } from '@bitdev/platforms.platform';
+
+export const MyPlatform = Platform.from({
+  name: 'my-platform',
+
+  backends: {
+    main: new AcmeGateway(),
+    services: [
+      ChatService,
+    ]
+  },
+});
+```
