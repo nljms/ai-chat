@@ -23,6 +23,11 @@ npm -v # should print `10.7.0`
 > Note: if you aren't using Mac, the link above 👆🏽 provides you various ways to install node on your machine
 
 - [pnpm](https://pnpm.io/) - is the package manager used in this project
+- [bit cli](https://bit.dev/docs/getting-started/installing-bit/installing-bit/)
+```bash
+npx @teambit/bvm install
+# you need to reload your bash profile to be able to access
+```
 
 ## What's inside?
 This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping this monorepo. You can read more about this tool on their [documentation page](https://bit.dev/docs/intro/)
@@ -31,7 +36,11 @@ This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping this 
 ## Up and running
 - Install dependencies
 ```
-pnpm install
+bit install
+```
+- Check if the apps are listed
+```bash
+bit app list # should show 2 apps (chat-ui and chat-service)
 ```
 - Run the application
 ```
