@@ -30,7 +30,7 @@ npx @teambit/bvm install
 ```
 
 ## What's inside?
-This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping this monorepo. You can read more about this tool on their [documentation page](https://bit.dev/docs/intro/)
+This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping the monorepo. You can read more about this tool on their [documentation page](https://bit.dev/docs/intro/)
 
 
 ## Up and running
@@ -50,3 +50,4 @@ bit run chat-service
 bit run chat-ui
 ```
 
+![initial version](screenshots/image.png)
