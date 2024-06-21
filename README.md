@@ -49,5 +49,7 @@ bit run chat-service
 # frontend
 bit run chat-ui
 ```
+## Screenshots
+This is how the application should look like
 
 ![initial version](screenshots/image.png)
