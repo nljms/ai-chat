@@ -11,6 +11,7 @@ class GroqClient implements AiClient {
   private client = groq;
 
   async stream(message: string) {
+    const messages = message.split("|");
     const stream = await this.client.chat.completions.create({
       model: "llama3-8b-8192",
       messages: [
@@ -20,7 +21,11 @@ class GroqClient implements AiClient {
         },
         {
           role: "user",
-          content: message,
+          content: messages[messages.length - 2],
+        },
+        {
+          role: "user",
+          content: messages[messages.length - 1],
         },
       ],
       temperature: 0.5,

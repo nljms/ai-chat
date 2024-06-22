@@ -11,3 +11,10 @@ type ClientStream =
 export type AiClient = {
   stream: (message: string) => Promise<ClientStream>;
 };
+
+export type CacheMachine = {
+  get: (key: string) => Promise<string | null>;
+  set: (key: string, value: string) => Promise<void>;
+  connect: () => Promise<void>;
+  disconnect: () => Promise<void>;
+};
