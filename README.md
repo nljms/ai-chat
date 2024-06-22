@@ -35,7 +35,7 @@ This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping the m
 
 ## Up and running
 - Install dependencies
-```
+```bash
 bit install
 ```
 - Check if the apps are listed
@@ -43,7 +43,7 @@ bit install
 bit app list # should show 2 apps (chat-ui and chat-service)
 ```
 - Run the application
-```
+```bash
 # backend
 bit run chat-service
 # frontend
