@@ -5,11 +5,14 @@ dotenv.config();
 
 import { ChatService } from "./chat-service.js";
 import { SseHeaders } from "./constants/headers.js";
+import { redisClient } from "./clients/index.js";
 
-export function run() {
+export async function run() {
   const app = express();
   const chatService = ChatService.from();
   const port = process.env.PORT || 3000;
+
+  await redisClient.connect();
 
   /**
    * learn more on the express docs:
