@@ -38,6 +38,9 @@ importers:
       '@testing-library/react':
         specifier: ^14.2.1
         version: 14.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/express':
+        specifier: ^4.17.21
+        version: 4.17.21
       '@types/jest':
         specifier: ^29.2.2
         version: 29.5.12
@@ -68,9 +71,15 @@ importers:
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
+      axios:
+        specifier: ^1.7.2
+        version: 1.7.2
       browserslist:
         specifier: 4.23.0
         version: 4.23.0
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       eslint:
         specifier: 8.56.0
         version: 8.56.0
@@ -95,15 +104,24 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      formik:
+        specifier: ^2.4.6
+        version: 2.4.6(react@18.3.1)
       graphql:
         specifier: ^16.8.1
         version: 16.8.2
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.8.2)
+      groq-sdk:
+        specifier: ^0.5.0
+        version: 0.5.0
       jsdom:
         specifier: ^24.0.0
         version: 24.1.0
+      openai:
+        specifier: ^4.52.0
+        version: 4.52.0
       pino-pretty:
         specifier: 4.5.0
         version: 4.5.0
@@ -155,7 +173,7 @@ importers:
         version: file:simple-chat/chat-service(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)(typescript@5.5.2)
       '@nljms/simple-chat.chat-ui':
         specifier: workspace:*
-        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
+        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(postcss@8.4.38)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@18.2.23)(react@18.3.1)
@@ -235,7 +253,7 @@ importers:
         version: file:simple-chat/chat-service(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)(typescript@5.5.2)
       '@nljms/simple-chat.chat-ui':
         specifier: workspace:*
-        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
+        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(postcss@8.4.38)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@18.2.23)(react@18.3.1)
@@ -339,7 +357,7 @@ importers:
         version: file:simple-chat/chat-service(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)(typescript@5.5.2)
       '@nljms/simple-chat.chat-ui':
         specifier: workspace:*
-        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
+        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(postcss@8.4.38)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@18.2.23)(react@18.3.1)
@@ -388,6 +406,12 @@ importers:
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.8.2)
+      groq-sdk:
+        specifier: ^0.5.0
+        version: 0.5.0
+      openai:
+        specifier: ^4.52.0
+        version: 4.52.0
       react:
         specifier: ^18.0.0
         version: 18.3.1
@@ -401,6 +425,9 @@ importers:
       '@bitdev/node.node-env':
         specifier: 2.0.11
         version: 2.0.11(@babel/core@7.24.7)(@babel/traverse@7.24.7)(@jest/globals@29.7.0)(@testing-library/react@14.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(rollup@4.18.0)(sass@1.77.6)(terser@5.31.1)(type-fest@3.13.1)(typescript@5.5.2)
+      '@types/express':
+        specifier: ^4.17.21
+        version: 4.17.21
     dependenciesMeta:
       '@nljms/simple-chat.chat-service':
         injected: true
@@ -426,7 +453,7 @@ importers:
         version: file:simple-chat/chat-service(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)(typescript@5.5.2)
       '@nljms/simple-chat.chat-ui':
         specifier: workspace:*
-        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
+        version: file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(postcss@8.4.38)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)
       '@teambit/mdx.ui.mdx-scope-context':
         specifier: 1.0.7
         version: 1.0.7(@types/react@18.2.23)(react@18.3.1)
@@ -463,6 +490,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^1.6.0
         version: 1.6.0(vitest@1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1))
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
       browserslist:
         specifier: 4.23.0
         version: 4.23.0
@@ -487,6 +517,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: 4.6.0
         version: 4.6.0(eslint@8.56.0)
+      formik:
+        specifier: ^2.4.6
+        version: 2.4.6(react@18.3.1)
       graphql:
         specifier: ^16.8.1
         version: 16.8.2
@@ -586,6 +619,12 @@ importers:
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.8.2)
+      groq-sdk:
+        specifier: ^0.5.0
+        version: 0.5.0
+      openai:
+        specifier: ^4.52.0
+        version: 4.52.0
       react:
         specifier: ^18.0.0
         version: 18.3.1
@@ -599,6 +638,9 @@ importers:
       '@bitdev/node.node-env':
         specifier: 2.0.11
         version: 2.0.11(@babel/core@7.24.7)(@babel/traverse@7.24.7)(@jest/globals@29.7.0)(@testing-library/react@14.3.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react-dom@18.3.0)(@types/react@18.2.23)(jest@29.3.1(@types/node@20.12.10))(jsdom@24.1.0)(lightningcss@1.25.1)(rollup@4.18.0)(sass@1.77.6)(terser@5.31.1)(type-fest@3.13.1)(typescript@5.5.2)
+      '@types/express':
+        specifier: ^4.17.21
+        version: 4.17.21
 
   simple-chat/chat-ui:
     dependencies:
@@ -650,6 +692,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^1.6.0
         version: 1.6.0(vitest@1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1))
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
       browserslist:
         specifier: 4.23.0
         version: 4.23.0
@@ -674,6 +719,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: 4.6.0
         version: 4.6.0(eslint@8.56.0)
+      formik:
+        specifier: ^2.4.6
+        version: 2.4.6(react@18.3.1)
       graphql:
         specifier: ^16.8.1
         version: 16.8.2
@@ -3305,6 +3353,9 @@ packages:
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
+  '@types/hoist-non-react-statics@3.3.5':
+    resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
+
   '@types/html-minifier-terser@6.1.0':
     resolution: {integrity: sha512-oh/6byDPnL1zeNXFrDXFLyZjkr1MsBG667IM792caf1L2UPOOMf65NFzjUH/ltyfwjAGfs1rsX1eftK0jC/KIg==}
 
@@ -3353,8 +3404,14 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
+  '@types/node-fetch@2.6.11':
+    resolution: {integrity: sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==}
+
   '@types/node-forge@1.3.11':
     resolution: {integrity: sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ==}
+
+  '@types/node@18.19.38':
+    resolution: {integrity: sha512-SApYXUF7si4JJ+lO2o6X60OPOnA6wPpbiB09GMCkQ+JAwpa9hxUVG8p7GzA08TKQn5OhzK57rj1wFj+185YsGg==}
 
   '@types/node@20.12.10':
     resolution: {integrity: sha512-Eem5pH9pmWBHoGAT8Dr5fdc5rYA+4NAovdM4EktRPVAAiJhmWWfQrA0cFhAbOsQdSfIHjAud6YdkbL69+zSKjw==}
@@ -3625,6 +3682,10 @@ packages:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
+  abort-controller@3.0.0:
+    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
+    engines: {node: '>=6.5'}
+
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
     engines: {node: '>= 0.6'}
@@ -3671,6 +3732,10 @@ packages:
   agent-base@7.1.1:
     resolution: {integrity: sha512-H0TSyFNDMomMNJQBn8wFV5YC/2eJ+VXECwOadZJT554xP6cODZHPX3H9QMQECxvrgiSOP1pHjy1sMWQVYJOUOA==}
     engines: {node: '>= 14'}
+
+  agentkeepalive@4.5.0:
+    resolution: {integrity: sha512-5GG/5IbQQpC9FpkRGsSvZI5QYeSCzlJHdpBQntCsuTOxhKD8lqKhrleg2Yi7yvMIf82Ycmmqln9U8V9qwEiJew==}
+    engines: {node: '>= 8.0.0'}
 
   ajv-formats@2.1.1:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
@@ -3833,6 +3898,9 @@ packages:
   axe-core@4.7.0:
     resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
     engines: {node: '>=4'}
+
+  axios@1.7.2:
+    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
 
   axobject-query@3.2.1:
     resolution: {integrity: sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==}
@@ -4600,6 +4668,10 @@ packages:
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
 
+  deepmerge@2.2.1:
+    resolution: {integrity: sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==}
+    engines: {node: '>=0.10.0'}
+
   deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
@@ -4745,6 +4817,10 @@ packages:
 
   dot-case@3.0.4:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
+
+  dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
 
   duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -5204,6 +5280,10 @@ packages:
   event-emitter@0.3.5:
     resolution: {integrity: sha512-D9rRn9y7kLPnJ+hMq7S/nhvoKwwvVJahBi2BPmx3bvbsEdK3W9ii8cBSGjP+72/LnM4n6fo3+dkCX5FeTQruXA==}
 
+  event-target-shim@5.0.1:
+    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
+    engines: {node: '>=6'}
+
   eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
@@ -5352,6 +5432,9 @@ packages:
       vue-template-compiler:
         optional: true
 
+  form-data-encoder@1.7.2:
+    resolution: {integrity: sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==}
+
   form-data@3.0.1:
     resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
     engines: {node: '>= 6'}
@@ -5363,6 +5446,15 @@ packages:
   format@0.2.2:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
     engines: {node: '>=0.4.x'}
+
+  formdata-node@4.4.1:
+    resolution: {integrity: sha512-0iirZp3uVDjVGt9p49aTaqjk84TrglENEDuqfdlZQ1roC9CWlPk6Avf8EEnZNcAqPonwkG35x4n3ww/1THYAeQ==}
+    engines: {node: '>= 12.20'}
+
+  formik@2.4.6:
+    resolution: {integrity: sha512-A+2EI7U7aG296q2TLGvNapDNTZp1khVt5Vk0Q/fyfSROss0V/V6+txt2aJnwEos44IxTCW/LYAi/zgWzlevj+g==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -5525,6 +5617,9 @@ packages:
   graphql@16.8.2:
     resolution: {integrity: sha512-cvVIBILwuoSyD54U4cF/UXDh5yAobhNV/tPygI4lZhgOIJQE/WLWC4waBRb4I6bDVYb3OVx3lfHbaQOEoUD5sg==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+
+  groq-sdk@0.5.0:
+    resolution: {integrity: sha512-RVmhW7qZ+XZoy5fIuSdx/LGQJONpL8MHgZEW7dFwTdgkzStub2XQx6OKv28CHogijdwH41J+Npj/z2jBPu3vmw==}
 
   gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
@@ -5714,6 +5809,9 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+
+  humanize-ms@1.2.1:
+    resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
 
   humanize-string@2.1.0:
     resolution: {integrity: sha512-sQ+hqmxyXW8Cj7iqxcQxD7oSy3+AXnIZXdUF9lQMkzaG8dtbKAB8U7lCtViMnwQ+MpdCKsO2Kiij3G6UUXq/Xg==}
@@ -6833,6 +6931,10 @@ packages:
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
 
+  node-domexception@1.0.0:
+    resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
+    engines: {node: '>=10.5.0'}
+
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -6955,6 +7057,10 @@ packages:
   open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
+
+  openai@4.52.0:
+    resolution: {integrity: sha512-xmiNcdA9QJ5wffHpZDpIsge6AsPTETJ6h5iqDNuFQ7qGSNtonHn8Qe0VHy4UwLE8rBWiSqh4j+iSvuYZSeKkPg==}
+    hasBin: true
 
   optimism@0.18.0:
     resolution: {integrity: sha512-tGn8+REwLRNFnb9WmcY5IfpOqeX2kpaYJ1s6Ae3mn12AeydLkR3j+jSCmVQFoXqU8D41PAJ1RG1rCRNWmNZVmQ==}
@@ -7631,6 +7737,9 @@ packages:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
 
+  proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+
   prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
 
@@ -7731,6 +7840,9 @@ packages:
 
   react-error-overlay@6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
+
+  react-fast-compare@2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -8498,6 +8610,9 @@ packages:
     resolution: {integrity: sha512-wFH7+SEAcKfJpfLPkrgMPvvwnEtj8W4IurvEyrKsDleXnKLCDw71w8jltvfLa8Rm4qQxxT4jmDBYbJG/z7qoww==}
     engines: {node: '>=0.12'}
 
+  tiny-warning@1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+
   tinybench@2.8.0:
     resolution: {integrity: sha512-1/eK7zUnIklz4JUUlL+658n58XO2hHLQfSk1Zf2LKieUjxidN16eKFEoDEfjHc3ohofSSqK3X5yO6VGb6iW8Lw==}
 
@@ -8961,6 +9076,14 @@ packages:
 
   web-namespaces@1.1.4:
     resolution: {integrity: sha512-wYxSGajtmoP4WxfejAPIr4l0fVh+jeMXZb08wNc0tMg6xsfZXj3cECqIK0G7ZAqUq0PP8WlMDtaOGVBTAWztNw==}
+
+  web-streams-polyfill@3.3.3:
+    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
+    engines: {node: '>= 8'}
+
+  web-streams-polyfill@4.0.0-beta.3:
+    resolution: {integrity: sha512-QW95TCTaHmsYfHDybGMwO5IJIM93I/6vTRk+daHTWFPhwh+C8Cg7j7XyKrwrj8Ib6vYXe0ocYNrmzY4xAAN6ug==}
+    engines: {node: '>= 14'}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -11945,6 +12068,8 @@ snapshots:
       express: 4.19.2
       graphql: 16.8.2
       graphql-tag: 2.12.6(graphql@16.8.2)
+      groq-sdk: 0.5.0
+      openai: 4.52.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       vitest: 1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)
@@ -11953,6 +12078,7 @@ snapshots:
       - '@types/react'
       - '@vitest/browser'
       - '@vitest/ui'
+      - encoding
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - happy-dom
@@ -11967,7 +12093,7 @@ snapshots:
       - terser
       - typescript
 
-  '@nljms/simple-chat.chat-ui@file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)':
+  '@nljms/simple-chat.chat-ui@file:simple-chat/chat-ui(@jest/globals@29.7.0)(jest@29.3.1(@types/node@20.12.10))(lightningcss@1.25.1)(postcss@8.4.38)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.31.1)(typescript@5.5.2)':
     dependencies:
       '@apollo/client': 3.10.5(@types/react@18.2.23)(graphql@16.8.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@bitdev/react.app-types.vite-react': 2.0.1(@types/node@20.12.10)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)
@@ -11985,6 +12111,7 @@ snapshots:
       '@typescript-eslint/parser': 6.19.1(eslint@8.56.0)(typescript@5.5.2)
       '@vitejs/plugin-react': 4.3.1(vite@5.3.1(@types/node@20.12.10)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1))
       '@vitest/coverage-v8': 1.6.0(vitest@1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1))
+      autoprefixer: 10.4.19(postcss@8.4.38)
       browserslist: 4.23.0
       eslint: 8.56.0
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.1(eslint@8.56.0)(typescript@5.5.2))(eslint@8.56.0)
@@ -11993,6 +12120,7 @@ snapshots:
       eslint-plugin-mdx: 3.1.5(eslint@8.56.0)
       eslint-plugin-react: 7.33.2(eslint@8.56.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.56.0)
+      formik: 2.4.6(react@18.3.1)
       graphql: 16.8.2
       jsdom: 24.1.0
       pino-pretty: 4.5.0
@@ -12021,6 +12149,7 @@ snapshots:
       - jest
       - less
       - lightningcss
+      - postcss
       - stylus
       - subscriptions-transport-ws
       - sugarss
@@ -13822,6 +13951,11 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.2
 
+  '@types/hoist-non-react-statics@3.3.5':
+    dependencies:
+      '@types/react': 18.2.23
+      hoist-non-react-statics: 3.3.2
+
   '@types/html-minifier-terser@6.1.0': {}
 
   '@types/http-errors@2.0.4': {}
@@ -13871,9 +14005,18 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
+  '@types/node-fetch@2.6.11':
+    dependencies:
+      '@types/node': 20.12.10
+      form-data: 4.0.0
+
   '@types/node-forge@1.3.11':
     dependencies:
       '@types/node': 20.12.10
+
+  '@types/node@18.19.38':
+    dependencies:
+      undici-types: 5.26.5
 
   '@types/node@20.12.10':
     dependencies:
@@ -14244,6 +14387,10 @@ snapshots:
 
   abbrev@2.0.0: {}
 
+  abort-controller@3.0.0:
+    dependencies:
+      event-target-shim: 5.0.1
+
   accepts@1.3.8:
     dependencies:
       mime-types: 2.1.35
@@ -14290,6 +14437,10 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
+
+  agentkeepalive@4.5.0:
+    dependencies:
+      humanize-ms: 1.2.1
 
   ajv-formats@2.1.1:
     dependencies:
@@ -14484,6 +14635,14 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   axe-core@4.7.0: {}
+
+  axios@1.7.2:
+    dependencies:
+      follow-redirects: 1.15.6
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
 
   axobject-query@3.2.1:
     dependencies:
@@ -15439,6 +15598,8 @@ snapshots:
 
   deep-is@0.1.4: {}
 
+  deepmerge@2.2.1: {}
+
   deepmerge@4.3.1: {}
 
   default-gateway@6.0.3:
@@ -15581,6 +15742,8 @@ snapshots:
     dependencies:
       no-case: 3.0.4
       tslib: 2.6.3
+
+  dotenv@16.4.5: {}
 
   duplexer@0.1.2: {}
 
@@ -16208,6 +16371,8 @@ snapshots:
       d: 1.0.2
       es5-ext: 0.10.64
 
+  event-target-shim@5.0.1: {}
+
   eventemitter3@4.0.7: {}
 
   events@3.3.0: {}
@@ -16434,6 +16599,8 @@ snapshots:
     optionalDependencies:
       eslint: 8.56.0
 
+  form-data-encoder@1.7.2: {}
+
   form-data@3.0.1:
     dependencies:
       asynckit: 0.4.0
@@ -16447,6 +16614,23 @@ snapshots:
       mime-types: 2.1.35
 
   format@0.2.2: {}
+
+  formdata-node@4.4.1:
+    dependencies:
+      node-domexception: 1.0.0
+      web-streams-polyfill: 4.0.0-beta.3
+
+  formik@2.4.6(react@18.3.1):
+    dependencies:
+      '@types/hoist-non-react-statics': 3.3.5
+      deepmerge: 2.2.1
+      hoist-non-react-statics: 3.3.2
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      react: 18.3.1
+      react-fast-compare: 2.0.4
+      tiny-warning: 1.0.3
+      tslib: 2.6.3
 
   forwarded@0.2.0: {}
 
@@ -16622,6 +16806,19 @@ snapshots:
       tslib: 2.6.3
 
   graphql@16.8.2: {}
+
+  groq-sdk@0.5.0:
+    dependencies:
+      '@types/node': 18.19.38
+      '@types/node-fetch': 2.6.11
+      abort-controller: 3.0.0
+      agentkeepalive: 4.5.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+      web-streams-polyfill: 3.3.3
+    transitivePeerDependencies:
+      - encoding
 
   gzip-size@6.0.0:
     dependencies:
@@ -16924,6 +17121,10 @@ snapshots:
   human-signals@2.1.0: {}
 
   human-signals@5.0.0: {}
+
+  humanize-ms@1.2.1:
+    dependencies:
+      ms: 2.1.3
 
   humanize-string@2.1.0:
     dependencies:
@@ -18405,6 +18606,8 @@ snapshots:
       lower-case: 2.0.2
       tslib: 2.6.3
 
+  node-domexception@1.0.0: {}
+
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
@@ -18519,6 +18722,19 @@ snapshots:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  openai@4.52.0:
+    dependencies:
+      '@types/node': 18.19.38
+      '@types/node-fetch': 2.6.11
+      abort-controller: 3.0.0
+      agentkeepalive: 4.5.0
+      form-data-encoder: 1.7.2
+      formdata-node: 4.4.1
+      node-fetch: 2.7.0
+      web-streams-polyfill: 3.3.3
+    transitivePeerDependencies:
+      - encoding
 
   optimism@0.18.0:
     dependencies:
@@ -19213,6 +19429,8 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
+  proxy-from-env@1.1.0: {}
+
   prr@1.0.1: {}
 
   psl@1.9.0: {}
@@ -19379,6 +19597,8 @@ snapshots:
   react-error-overlay@6.0.11: {}
 
   react-error-overlay@6.0.9: {}
+
+  react-fast-compare@2.0.4: {}
 
   react-is@16.13.1: {}
 
@@ -20320,6 +20540,8 @@ snapshots:
       es5-ext: 0.10.64
       next-tick: 1.1.0
 
+  tiny-warning@1.0.3: {}
+
   tinybench@2.8.0: {}
 
   tinypool@0.8.4: {}
@@ -20849,6 +21071,10 @@ snapshots:
       minimalistic-assert: 1.0.1
 
   web-namespaces@1.1.4: {}
+
+  web-streams-polyfill@3.3.3: {}
+
+  web-streams-polyfill@4.0.0-beta.3: {}
 
   webidl-conversions@3.0.1: {}
 
