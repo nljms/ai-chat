@@ -28,6 +28,9 @@ npm -v # should print `10.7.0`
 npx @teambit/bvm install
 # you need to reload your bash profile to be able to access
 ```
+- [docker](https://docs.docker.com/engine/install/) - for containerization
+- [docker-compose](https://docs.docker.com/compose/install/) - if compose is not installed together with docker
+
 
 ## What's inside?
 This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping the monorepo. You can read more about this tool on their [documentation page](https://bit.dev/docs/intro/)
@@ -41,6 +44,12 @@ bit install
 - Check if the apps are listed
 ```bash
 bit app list # should show 2 apps (chat-ui and chat-service)
+```
+- Run compose file
+```bash
+docker-compose up # -d (dettached mode)
+# down services
+docker-compose down
 ```
 - Run the application
 ```bash
