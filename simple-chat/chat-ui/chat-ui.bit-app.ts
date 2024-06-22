@@ -9,7 +9,7 @@ export default ViteReact.from({
   /**
    * determine whether to use ssr mode or not.
    */
-  ssr: true,
+  ssr: false,
 
   /**
    * vite config for the browser target.
