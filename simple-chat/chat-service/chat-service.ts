@@ -21,15 +21,13 @@ export class ChatService {
   /**
    * send a message.
    */
-  async sendMessage(message: string) {
-    const cacheId = "neil-chat-id";
-
+  async sendMessage(sessionId: string, message: string) {
+    const cacheId = sessionId;
     const cache = (await this.cacheMachine.get(cacheId)) ?? "";
-
     const cachedMessage = [cache, message].join("|");
 
     await this.cacheMachine.set(cacheId, cachedMessage);
-    console.log(`Cache: ${cachedMessage}`);
+
     return this.client.stream(cachedMessage);
   }
 
