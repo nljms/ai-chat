@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  app-tier:
+  chat-app-tier:
     driver: bridge
 
 services:
@@ -10,7 +10,18 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
-      - app-tier
+      - chat-app-tier
     ports:
       - '6379:6379'
 
+  mongodb:
+    image: 'mongo'
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: hello
+      MONGO_INITDB_DATABASE: chat-app
+    networks:
+      - chat-app-tier
+    ports:
+      - '27017:27017'
