@@ -1,6 +1,8 @@
+export type User = 'user' | 'system';
+
 export type ChatMessage = {
   id?: string;
-  user: 'user' | 'system';
+  user: User;
   message: string;
   timestamp?: Date;
 };
