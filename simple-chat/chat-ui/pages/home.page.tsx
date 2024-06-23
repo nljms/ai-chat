@@ -5,18 +5,18 @@ import { v4 as uuidv4, validate } from 'uuid';
 
 import { getChatStreams, getChats } from '../api/chatApi.js';
 import { Bubble, ChatBar, Container } from '../components/index.js';
-import { ChatMessage } from '../types.js';
+import { ChatMessage, User } from '../types.js';
 
 type FormValues = {
   message: string;
-  sender: string;
+  user: User;
 };
 
 const Home = (props) => {
   console.log('Home props:', props);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [reply, setReply] = useState('...');
-  const bubbleRef = useRef<HTMLDivElement>();
+  const chatContainerRef = useRef<HTMLDivElement>();
 
   const [searchParams, setSearchParam] = useSearchParams();
   const chatSessionId = searchParams.get('chatSessionId');
@@ -37,6 +37,11 @@ const Home = (props) => {
       console.log('Home unmounted.');
     };
   }, []);
+
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }, [reply, chatSessionId]);
 
   const onSend = async (
     values: FormValues,
@@ -63,7 +68,7 @@ const Home = (props) => {
     }
 
     if (!response) return;
-    history.push({ message: response, user: 'system' });
+    history.push({ message: response.trim(), user: 'system' });
     helpers.setSubmitting(false);
     setReply('...');
     setChatHistory(history);
@@ -73,27 +78,25 @@ const Home = (props) => {
     <Formik
       initialValues={{
         message: '',
-        sender: '',
+        user: '',
       }}
       onSubmit={onSend}
     >
       {({ values, setFieldValue, handleSubmit, isSubmitting }) => (
         <Container>
-          <div className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll">
+          <div
+            className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
+            ref={chatContainerRef}
+          >
             {chatHistory.map((history) => (
               <Bubble
                 key={history.id}
                 message={history.message}
-                sender={history.user}
+                user={history.user}
               />
             ))}
             {isSubmitting && (
-              <Bubble
-                key={chatSessionId}
-                innerRef={bubbleRef}
-                message={reply}
-                sender="system"
-              />
+              <Bubble key={chatSessionId} message={reply} user="system" />
             )}
           </div>
           <div className="w-full">
