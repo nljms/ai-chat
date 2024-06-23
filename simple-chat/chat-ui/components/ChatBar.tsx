@@ -37,7 +37,6 @@ const ChatBar = (props: ChatBarProps) => {
             setMessage(value);
             props.setFieldValue('message', value);
           }}
-          disabled={props.disabled}
         />
         <Input.Button variant="primary" type="submit" disabled={props.disabled}>
           Send

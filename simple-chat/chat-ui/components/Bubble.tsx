@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import Markdown from './Markdown.js';
 import { User } from '../types.js';
 
 type BubbleProps = {
@@ -14,7 +15,7 @@ const Bubble = (props: BubbleProps) => {
   const cls = {
     user: 'bg-sky-400',
     system: 'bg-sky-700',
-    invalid: 'bg-gray-500',
+    invalid: 'bg-gray-500 text-gray-800',
   };
 
   const userClass = {
@@ -46,13 +47,13 @@ const Bubble = (props: BubbleProps) => {
         }`}
         ref={props.innerRef}
       >
-        {message ? (
-          message
-        ) : (
-          <span>
-            Message unavailable. The server didn&apos;t send anything.
-          </span>
-        )}
+        <span className="text-slate-900">
+          {message ? (
+            <Markdown>{message}</Markdown>
+          ) : (
+            'Message unavailable. The server didn&apos;t send anything.'
+          )}
+        </span>
       </div>
     </div>
   );

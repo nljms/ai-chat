@@ -21,7 +21,7 @@ class GroqClient implements AiClient {
       messages: [
         {
           role: "system",
-          content: "you are a helpful assistant.",
+          content: "format responses to markdown",
         },
         ...messages,
       ],

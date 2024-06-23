@@ -128,6 +128,9 @@ importers:
       jsdom:
         specifier: ^24.0.0
         version: 24.1.0
+      markdown-to-jsx:
+        specifier: ^7.4.7
+        version: 7.4.7(react@18.3.1)
       mongoose:
         specifier: ^8.4.3
         version: 8.4.3
@@ -568,6 +571,9 @@ importers:
       jsdom:
         specifier: ^24.0.0
         version: 24.1.0
+      markdown-to-jsx:
+        specifier: ^7.4.7
+        version: 7.4.7(react@18.3.1)
       pino-pretty:
         specifier: 4.5.0
         version: 4.5.0
@@ -797,6 +803,9 @@ importers:
       jsdom:
         specifier: ^24.0.0
         version: 24.1.0
+      markdown-to-jsx:
+        specifier: ^7.4.7
+        version: 7.4.7(react@18.3.1)
       pino-pretty:
         specifier: 4.5.0
         version: 4.5.0
@@ -6772,6 +6781,12 @@ packages:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
     engines: {node: '>=16'}
 
+  markdown-to-jsx@7.4.7:
+    resolution: {integrity: sha512-0+ls1IQZdU6cwM1yu0ZjjiVWYtkbExSyUIFU2ZeDIFuZM1W42Mh4OlJ4nb4apX4H8smxDHRdFaoIVJGwfv5hkg==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      react: '>= 0.14.0'
+
   md5.js@1.3.5:
     resolution: {integrity: sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==}
 
@@ -12353,6 +12368,7 @@ snapshots:
       formik: 2.4.6(react@18.3.1)
       graphql: 16.8.2
       jsdom: 24.1.0
+      markdown-to-jsx: 7.4.7(react@18.3.1)
       pino-pretty: 4.5.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -18384,6 +18400,10 @@ snapshots:
   markdown-escapes@1.0.4: {}
 
   markdown-extensions@2.0.0: {}
+
+  markdown-to-jsx@7.4.7(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   md5.js@1.3.5:
     dependencies:
