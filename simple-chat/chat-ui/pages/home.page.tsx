@@ -7,6 +7,7 @@ import { getChatStreams, getChats } from '../api/chatApi.js';
 import { Bubble, ChatBar, Container } from '../components/index.js';
 import { ChatMessage, User } from '../types.js';
 import ErrorPage from './error.page.js';
+import Empty from '../components/Empty.js';
 
 type FormValues = {
   message: string;
@@ -107,6 +108,7 @@ const Home = (props) => {
             className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
             ref={chatContainerRef}
           >
+            {!chatHistory.length && <Empty />}
             {chatHistory.map((history) => (
               <Bubble
                 key={history.id}
