@@ -9,7 +9,7 @@ dotenv.config();
 import { ChatService } from "./chat-service.js";
 import { SseHeaders } from "./constants/headers.js";
 import { redisClient, mongooseClient } from "./clients/index.js";
-import { Message, eventEmitter } from "./events/messages.js";
+import { Message, eventEmitter } from "./events/messaging.js";
 import { ChatHistoryService } from "./services/chat-history.service.js";
 
 export async function run() {
