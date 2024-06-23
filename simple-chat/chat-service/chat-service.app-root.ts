@@ -58,7 +58,10 @@ export async function run() {
     const chatHistory = await ChatHistoryService.getChatHistory(chatSessionId);
 
     if (!chatHistory) {
-      res.status(404).send("Chat history not found");
+      res.json({
+        room: chatSessionId,
+        messages: [],
+      });
       return;
     }
 

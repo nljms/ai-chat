@@ -38,13 +38,13 @@ const Home = (props) => {
       setChatHistory(response.messages);
     };
 
+    fetchChats(chatSessionId);
+
     if (!validate(chatSessionId)) {
       const sessionId = uuidv4();
       setSearchParam({ chatSessionId: sessionId });
       return;
     }
-
-    fetchChats(chatSessionId);
 
     return () => {
       console.log('Home unmounted.');
