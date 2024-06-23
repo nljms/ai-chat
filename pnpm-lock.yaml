@@ -451,6 +451,9 @@ importers:
       redis:
         specifier: ^4.6.14
         version: 4.6.14
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)
@@ -461,6 +464,9 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
     dependenciesMeta:
       '@nljms/simple-chat.chat-service':
         injected: true
@@ -685,6 +691,9 @@ importers:
       redis:
         specifier: ^4.6.14
         version: 4.6.14
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
       vitest:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)
@@ -695,6 +704,9 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/uuid':
+        specifier: ^10.0.0
+        version: 10.0.0
 
   simple-chat/chat-ui:
     dependencies:
@@ -12274,6 +12286,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       redis: 4.6.14
+      uuid: 10.0.0
       vitest: 1.6.0(@types/node@20.12.10)(jsdom@24.1.0)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)
     transitivePeerDependencies:
       - '@aws-sdk/credential-providers'
