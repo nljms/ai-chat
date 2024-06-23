@@ -18,3 +18,8 @@ export type CacheMachine = {
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
 };
+
+export type Storage = {
+  connect: () => Promise<void>;
+  disconnect: () => Promise<void>;
+};
