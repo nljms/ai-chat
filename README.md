@@ -58,7 +58,10 @@ bit run chat-service
 # frontend
 bit run chat-ui
 ```
-## Screenshots
-This is how the application should look like
+## Demo
+This is how it currently works.
 
-![initial version](screenshots/image.png)
+https://github.com/nljms/simple-chat/assets/25510386/51af1c39-c969-48c9-a1cc-fd44dd34437a
+
+
+
