@@ -6,6 +6,7 @@ type BubbleProps = {
   innerRef?: React.ForwardedRef<HTMLDivElement>;
   message: string;
   user: User;
+  hidden?: boolean;
 };
 
 const Bubble = (props: BubbleProps) => {
@@ -30,9 +31,9 @@ const Bubble = (props: BubbleProps) => {
   return (
     <div
       title={user}
-      className={`${containerClass} flex gap-3 ${
-        fromMe ? 'flex-row-reverse' : ''
-      }`}
+      className={`${containerClass} ${
+        props.hidden ? 'hidden' : ''
+      } flex gap-3 ${fromMe ? 'flex-row-reverse' : ''}`}
     >
       <div
         className={`pointer-events-none flex-1 bg  shadow-lg shadow-[black] items-center justify-center flex rounded-full p-2 h-10 min-w-10 text-white ${

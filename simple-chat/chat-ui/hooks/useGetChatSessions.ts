@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { ChatSession } from '../types.js';
+import { useEffect } from 'react';
+import { useChatStore } from '../contexts/chat.context.js';
 
 const useGetChatSessions = () => {
-  const [chatSessions, setChatSessions] = useState<ChatSession[]>([]);
+  const store = useChatStore();
 
   useEffect(() => {
     const fetchChatSessions = async () => {
@@ -12,16 +12,17 @@ const useGetChatSessions = () => {
 
       if (!response.ok) {
         console.error('Failed to fetch chat sessions', response.statusText);
+        store.setError(true);
         throw new Error('Failed to fetch chat sessions');
       }
       const data = await response.json();
-      setChatSessions(data);
+      store.updateChatSessions(data);
     };
 
     fetchChatSessions();
   }, []);
 
-  return chatSessions;
+  return store.chatSessions;
 };
 
 export default useGetChatSessions;

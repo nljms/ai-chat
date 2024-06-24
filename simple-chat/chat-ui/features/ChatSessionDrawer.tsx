@@ -3,6 +3,7 @@ import useGetChatSessions from '../hooks/useGetChatSessions.js';
 
 const ChatSessionDrawer = () => {
   const sessions = useGetChatSessions();
+
   return (
     <Drawer.Container anchor="right" open={true} onClose={() => {}}>
       <div className="flex flex-col w-[inherit] gap-2">

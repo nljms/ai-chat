@@ -1,15 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { Formik, FormikHelpers } from 'formik';
-import { v4 as uuidv4, validate } from 'uuid';
 
-import { getChatStreams, getChats } from '../api/chatApi.js';
 import { Bubble, ChatBar, Container } from '../components/index.js';
-import { ChatMessage, User } from '../types.js';
+import { User } from '../types.js';
 import ErrorPage from './error.page.js';
 import Empty from '../components/Empty.js';
 import ChatSessionDrawer from '../features/ChatSessionDrawer.js';
 import { AppContainer, ChatSessionContainer } from '../components/Container.js';
+
+import { useChatStore } from '../contexts/chat.context.js';
 
 type FormValues = {
   message: string;
@@ -18,49 +17,17 @@ type FormValues = {
 
 const Home = (props) => {
   console.log('Home props:', props);
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [reply, setReply] = useState('...');
+
   const chatContainerRef = useRef<HTMLDivElement>();
 
-  const [error, setError] = useState(false);
-
-  const [searchParams, setSearchParam] = useSearchParams();
-
-  const chatSessionId = searchParams.get('chatSessionId');
-
-  const isNetworkError = (response) => {
-    if (response instanceof Error) {
-      setError(true);
-    }
-    return response;
-  };
-
-  useEffect(() => {
-    const fetchChats = async (sessionId) => {
-      const response = await getChats(sessionId).catch(isNetworkError);
-
-      setChatHistory(response.messages);
-    };
-
-    fetchChats(chatSessionId);
-
-    if (!validate(chatSessionId)) {
-      const sessionId = uuidv4();
-      setSearchParam({ chatSessionId: sessionId });
-      return;
-    }
-
-    return () => {
-      console.log('Home unmounted.');
-    };
-  }, []);
+  const store = useChatStore();
 
   useEffect(() => {
     const chatContainer = chatContainerRef.current;
     chatContainer.scrollTop = chatContainer.scrollHeight;
-  }, [reply, chatSessionId]);
+  }, [store.loading]);
 
-  if (error) {
+  if (store.error) {
     return <ErrorPage />;
   }
 
@@ -72,29 +39,9 @@ const Home = (props) => {
 
     if (!cleanMessage) return;
 
-    const history = [
-      ...chatHistory,
-      { message: values.message, user: 'user' as any },
-    ];
-    const messages = await getChatStreams(chatSessionId, cleanMessage).catch(
-      isNetworkError
-    );
-
-    setChatHistory(history);
     helpers.setSubmitting(true);
-
-    let response = '';
-
-    for await (const message of messages) {
-      response += message;
-      setReply(response);
-    }
-
-    if (!response) return;
-    history.push({ message: response.trim(), user: 'system' });
+    await store.getChatStreams(cleanMessage);
     helpers.setSubmitting(false);
-    setReply('...');
-    setChatHistory(history);
   };
 
   return (
@@ -116,17 +63,21 @@ const Home = (props) => {
                 className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
                 ref={chatContainerRef}
               >
-                {!chatHistory.length && <Empty />}
-                {chatHistory.map((history) => (
+                {!store.chatHistory.length && <Empty />}
+                {store.chatHistory.map((history) => (
                   <Bubble
                     key={history.id}
                     message={history.message}
                     user={history.user}
                   />
                 ))}
-                {isSubmitting && (
-                  <Bubble key={chatSessionId} message={reply} user="system" />
-                )}
+                <Bubble
+                  hidden={!isSubmitting}
+                  key={store.chatSessionId}
+                  message="..."
+                  user="system"
+                  innerRef={store.typingRef}
+                />
               </div>
               <div className="w-full">
                 <ChatBar
