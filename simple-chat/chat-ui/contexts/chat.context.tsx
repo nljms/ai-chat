@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, SetURLSearchParams } from 'react-router-dom';
+import { validate, v4 as uuidv4 } from 'uuid';
+
 import { ChatMessage, ChatSession } from '../types.js';
 import * as api from '../api/chatApi.js';
 
@@ -25,6 +27,7 @@ type ChatStore = {
   model: Model;
   selectModel: (key: string, value: string) => void;
   selectedModel: string;
+  setSearchParam: SetURLSearchParams;
 };
 
 const ChatStoreContext = createContext<ChatStore | null>(null);
@@ -54,7 +57,6 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
   const [chatSessionId, setChatSessionId] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
   const [chatSessions, setChatSessions] = useState<ChatSession[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParam] = useSearchParams();
   const [model, setModel] = useState({});
   const [selectedModel, setSelectedModel] = useState('');
@@ -107,6 +109,11 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
 
   useEffect(() => {
     const sessionId = searchParams.get('chatSessionId');
+    const sessionIdValid = validate(sessionId);
+    if (!sessionIdValid) {
+      setSearchParam({ chatSessionId: uuidv4() });
+      return;
+    }
     if (sessionId) {
       setChatSessionId(sessionId);
       getChats(sessionId);
@@ -135,6 +142,7 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
         model,
         selectModel: handleSelectModel,
         selectedModel,
+        setSearchParam,
       }}
     >
       {props.children}
