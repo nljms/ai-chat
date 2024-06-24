@@ -14,8 +14,8 @@ const Bubble = (props: BubbleProps) => {
   const fromMe = user === 'user';
 
   const cls = {
-    user: 'bg-slate-600',
-    system: 'bg-slate-700',
+    user: 'bg-slate-800',
+    system: 'bg-none',
     invalid: 'bg-gray-600 text-gray-800',
   };
 
@@ -26,7 +26,7 @@ const Bubble = (props: BubbleProps) => {
 
   const containerClass = fromMe
     ? 'max-w-[65%] place-self-end'
-    : 'max-w-[65%] place-self-start';
+    : 'max-w-[90%] place-self-start';
 
   const bubbleMessage =
     message.trim() || "Message unavailable. The server didn't send anything.";
@@ -39,19 +39,19 @@ const Bubble = (props: BubbleProps) => {
       } flex gap-3 ${fromMe ? 'flex-row-reverse' : ''}`}
     >
       <div
-        className={`pointer-events-none flex-1 bg  shadow-lg shadow-[black] items-center justify-center flex rounded-full p-2 h-10 min-w-10 text-white ${
+        className={`pointer-events-none flex-1 bg  shadow-md shadow-[#000000ce] items-center justify-center flex rounded-full p-2 h-10 min-w-10 text-white ${
           userClass[user] ?? userClass.system
         }`}
       >
         <span className="pointer-events-none">{fromMe ? 'U' : 'B'}</span>
       </div>
       <div
-        className={`rounded-md bg p-2 shadow-lg shadow-[black] ${
+        className={`rounded-md bg p-2 shadow-[black] ${
           message ? cls[user] : cls.invalid
         }`}
         ref={props.innerRef}
       >
-        <span className="text-slate-100">
+        <span className="text-slate-400">
           <Markdown content={bubbleMessage}></Markdown>
         </span>
       </div>

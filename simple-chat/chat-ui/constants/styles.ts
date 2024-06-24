@@ -16,3 +16,5 @@ export type Variant =
 
 export const animatedBackground =
   'animated-background bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500';
+
+export const animatedTextColor = 'animated-text-color text-gradient';
