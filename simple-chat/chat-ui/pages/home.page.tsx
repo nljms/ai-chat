@@ -1,12 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 
-import { Bubble, ChatBar, Container } from '../components/index.js';
+import { Bubble, ChatBar, Container, Dropdown } from '../components/index.js';
 import { User } from '../types.js';
 import ErrorPage from './error.page.js';
 import Empty from '../components/Empty.js';
-import ChatSessionDrawer from '../features/ChatSessionDrawer.js';
-import { AppContainer, ChatSessionContainer } from '../components/Container.js';
+import { AppContainer, StickyNavContainer } from '../components/Container.js';
 
 import { useChatStore } from '../contexts/chat.context.js';
 
@@ -54,41 +53,47 @@ const Home = (props) => {
     >
       {({ values, setFieldValue, handleSubmit, isSubmitting }) => (
         <AppContainer>
-          <div className="flex">
-            <ChatSessionContainer>
-              <ChatSessionDrawer />
-            </ChatSessionContainer>
-            <Container>
-              <div
-                className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
-                ref={chatContainerRef}
-              >
-                {!store.chatHistory.length && <Empty />}
-                {store.chatHistory.map((history) => (
-                  <Bubble
-                    key={history.id}
-                    message={history.message}
-                    user={history.user}
-                  />
-                ))}
+          <StickyNavContainer animating={store.loading}>
+            <div className="flex flex-col gap-4 p-4 text-slate-200">
+              <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-bold">Chat</h1>
+                <div>
+                  <Dropdown
+                    optionList={{}}
+                    selected={store.selectedModel}
+                    onChange={store.selectModel}
+                  ></Dropdown>
+                </div>
+              </div>
+            </div>
+          </StickyNavContainer>
+          <Container innerRef={chatContainerRef}>
+            <div className="flex h-full flex-1 flex-col gap-4 p-4">
+              {!store.chatHistory.length && <Empty />}
+              {store.chatHistory.map((history) => (
                 <Bubble
-                  hidden={!isSubmitting}
-                  key={store.chatSessionId}
-                  message="..."
-                  user="system"
-                  innerRef={store.typingRef}
+                  key={history.id}
+                  message={history.message}
+                  user={history.user}
                 />
-              </div>
-              <div className="w-full">
-                <ChatBar
-                  placeholder="Please enter a message"
-                  value={values.message}
-                  setFieldValue={setFieldValue}
-                  onSendMessage={handleSubmit}
-                  disabled={isSubmitting}
-                />
-              </div>
-            </Container>
+              ))}
+              <Bubble
+                hidden={!isSubmitting}
+                key={store.chatSessionId}
+                message="..."
+                user="system"
+                innerRef={store.typingRef}
+              />
+            </div>
+          </Container>
+          <div className="w-full">
+            <ChatBar
+              placeholder="Please enter a message"
+              value={values.message}
+              setFieldValue={setFieldValue}
+              onSendMessage={handleSubmit}
+              disabled={isSubmitting}
+            />
           </div>
         </AppContainer>
       )}

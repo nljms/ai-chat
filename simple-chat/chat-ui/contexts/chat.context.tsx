@@ -3,6 +3,12 @@ import { useSearchParams } from 'react-router-dom';
 import { ChatMessage, ChatSession } from '../types.js';
 import * as api from '../api/chatApi.js';
 
+export type Model = {
+  [key: string]: {
+    values: string;
+  };
+};
+
 type ChatStore = {
   chatSessionId: string;
   chatHistory: ChatMessage[];
@@ -16,6 +22,9 @@ type ChatStore = {
   setLoading: (data: boolean) => void;
   getChatStreams: (sentMessage: string) => Promise<void>;
   typingRef: React.MutableRefObject<HTMLDivElement>;
+  model: Model;
+  selectModel: (key: string, value: string) => void;
+  selectedModel: string;
 };
 
 const ChatStoreContext = createContext<ChatStore | null>(null);
@@ -47,15 +56,24 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
   const [chatSessions, setChatSessions] = useState<ChatSession[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParam] = useSearchParams();
+  const [model, setModel] = useState({});
+  const [selectedModel, setSelectedModel] = useState('');
   const typingRef = useRef<HTMLDivElement>();
+
+  let timeoutId;
 
   /**
    * Get all the chats for a session
    * @param sessionId
    */
   const getChats = async (sessionId: string) => {
+    setLoading(true);
     const chats = await api.getChats(sessionId);
-    setChatHistory(chats.messages);
+
+    timeoutId = setTimeout(() => {
+      setChatHistory(chats.messages);
+      setLoading(false);
+    }, 3000);
   };
 
   /**
@@ -81,12 +99,22 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     setLoading(false);
   };
 
+  const handleSelectModel = (key: string, value: string) => {
+    console.log('key:', key, 'value:', value);
+    setModel({ [key]: { values: value } });
+    setSelectedModel(value);
+  };
+
   useEffect(() => {
     const sessionId = searchParams.get('chatSessionId');
     if (sessionId) {
       setChatSessionId(sessionId);
       getChats(sessionId);
     }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [chatSessionId]);
 
   return (
@@ -104,6 +132,9 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
         setLoading,
         getChatStreams,
         typingRef,
+        model,
+        selectModel: handleSelectModel,
+        selectedModel,
       }}
     >
       {props.children}

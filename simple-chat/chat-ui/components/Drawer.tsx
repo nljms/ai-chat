@@ -10,8 +10,8 @@ type DrawerProps = {
 
 export const Container = (props: DrawerProps) => {
   return (
-    <div className="md:w-96 w-0">
-      <div className="animated-background h-[90vh] rounded-lg shadow-lg p-[0.9px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+    <div className="md:w-96 w-0 opacity-0 md:opacity-100 md:block hidden">
+      <div className="animated-background h-[70vh] rounded-lg shadow-lg p-[0.9px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
         <div className="bg-slate-950 w-full h-full rounded-lg flex p-5 overflow-y-scroll scroll-m-9">
           {props.children}
         </div>

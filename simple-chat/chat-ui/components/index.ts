@@ -5,3 +5,4 @@ export { default as Bubble } from './Bubble.js';
 export * as Drawer from './Drawer.js';
 export { default as Empty } from './Empty.js';
 export { default as Link } from './Link.js';
+export { default as Dropdown } from './Dropdown.js';
