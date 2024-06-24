@@ -28,6 +28,9 @@ const Bubble = (props: BubbleProps) => {
     ? 'max-w-[65%] place-self-end'
     : 'max-w-[65%] place-self-start';
 
+  const bubbleMessage =
+    message.trim() || "Message unavailable. The server didn't send anything.";
+
   return (
     <div
       title={user}
@@ -49,11 +52,7 @@ const Bubble = (props: BubbleProps) => {
         ref={props.innerRef}
       >
         <span className="text-slate-100">
-          {message ? (
-            <Markdown>{message}</Markdown>
-          ) : (
-            'Message unavailable. The server didn&apos;t send anything.'
-          )}
+          <Markdown content={bubbleMessage}></Markdown>
         </span>
       </div>
     </div>
