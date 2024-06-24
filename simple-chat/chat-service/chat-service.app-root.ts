@@ -47,7 +47,12 @@ export async function run() {
     res.send("OK");
   });
 
-  app.get("/chat/:chatSessionId", async (req: Request, res: Response) => {
+  app.get("/chats", async (_, res: Response) => {
+    const chatSessions = await ChatHistoryService.getChatSessions();
+    res.json(chatSessions);
+  });
+
+  app.get("/chats/:chatSessionId", async (req: Request, res: Response) => {
     const chatSessionId = req.params.chatSessionId;
 
     if (!chatSessionId) {

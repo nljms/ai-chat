@@ -8,6 +8,8 @@ import { Bubble, ChatBar, Container } from '../components/index.js';
 import { ChatMessage, User } from '../types.js';
 import ErrorPage from './error.page.js';
 import Empty from '../components/Empty.js';
+import ChatSessionDrawer from '../features/ChatSessionDrawer.js';
+import { AppContainer, ChatSessionContainer } from '../components/Container.js';
 
 type FormValues = {
   message: string;
@@ -23,6 +25,7 @@ const Home = (props) => {
   const [error, setError] = useState(false);
 
   const [searchParams, setSearchParam] = useSearchParams();
+
   const chatSessionId = searchParams.get('chatSessionId');
 
   const isNetworkError = (response) => {
@@ -103,33 +106,40 @@ const Home = (props) => {
       onSubmit={onSend}
     >
       {({ values, setFieldValue, handleSubmit, isSubmitting }) => (
-        <Container>
-          <div
-            className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
-            ref={chatContainerRef}
-          >
-            {!chatHistory.length && <Empty />}
-            {chatHistory.map((history) => (
-              <Bubble
-                key={history.id}
-                message={history.message}
-                user={history.user}
-              />
-            ))}
-            {isSubmitting && (
-              <Bubble key={chatSessionId} message={reply} user="system" />
-            )}
+        <AppContainer>
+          <div className="flex">
+            <ChatSessionContainer>
+              <ChatSessionDrawer />
+            </ChatSessionContainer>
+            <Container>
+              <div
+                className="flex h-full flex-1 flex-col gap-4 p-4 overflow-y-scroll"
+                ref={chatContainerRef}
+              >
+                {!chatHistory.length && <Empty />}
+                {chatHistory.map((history) => (
+                  <Bubble
+                    key={history.id}
+                    message={history.message}
+                    user={history.user}
+                  />
+                ))}
+                {isSubmitting && (
+                  <Bubble key={chatSessionId} message={reply} user="system" />
+                )}
+              </div>
+              <div className="w-full">
+                <ChatBar
+                  placeholder="Please enter a message"
+                  value={values.message}
+                  setFieldValue={setFieldValue}
+                  onSendMessage={handleSubmit}
+                  disabled={isSubmitting}
+                />
+              </div>
+            </Container>
           </div>
-          <div className="w-full">
-            <ChatBar
-              placeholder="Please enter a message"
-              value={values.message}
-              setFieldValue={setFieldValue}
-              onSendMessage={handleSubmit}
-              disabled={isSubmitting}
-            />
-          </div>
-        </Container>
+        </AppContainer>
       )}
     </Formik>
   );

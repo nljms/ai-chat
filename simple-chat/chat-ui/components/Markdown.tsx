@@ -9,19 +9,19 @@ const Markdown = (props: MarkdownProps) => {
     h1: {
       component: 'h2',
       props: {
-        className: 'text-2xl font-bold text-slate-400',
+        className: 'text-2xl font-bold text-slate-100',
       },
     },
     h2: {
       component: 'h2',
       props: {
-        className: 'text-xl font-bold text-slate-400',
+        className: 'text-xl font-bold text-slate-100',
       },
     },
     h3: {
       component: 'h3',
       props: {
-        className: 'text-lg font-bold text-slate-400',
+        className: 'text-lg font-bold text-slate-100',
       },
     },
     p: {
@@ -33,7 +33,7 @@ const Markdown = (props: MarkdownProps) => {
     a: {
       component: 'a',
       props: {
-        className: 'text-slate-400',
+        className: 'text-slate-100',
       },
     },
     ul: {

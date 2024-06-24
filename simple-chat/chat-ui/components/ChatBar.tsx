@@ -15,7 +15,7 @@ const ChatBar = (props: ChatBarProps) => {
 
   return (
     <form
-      className="w-[inherit] flex items-center justify-center p-4"
+      className="w-[inherit] flex items-center justify-center p-4 gap-5"
       onSubmit={(values) => {
         setMessage('');
         props.onSendMessage(values);
@@ -42,7 +42,6 @@ const ChatBar = (props: ChatBarProps) => {
           Send
         </Input.Button>
       </div>
-      <div>{/* <Input.Dropdown></Input.Dropdown> */}</div>
     </form>
   );
 };

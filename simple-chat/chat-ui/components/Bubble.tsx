@@ -13,9 +13,9 @@ const Bubble = (props: BubbleProps) => {
   const fromMe = user === 'user';
 
   const cls = {
-    user: 'bg-sky-400',
-    system: 'bg-sky-700',
-    invalid: 'bg-gray-500 text-gray-800',
+    user: 'bg-slate-600',
+    system: 'bg-slate-700',
+    invalid: 'bg-gray-600 text-gray-800',
   };
 
   const userClass = {
@@ -35,19 +35,19 @@ const Bubble = (props: BubbleProps) => {
       }`}
     >
       <div
-        className={`pointer-events-none flex-1 shadow-lg shadow-[black] items-center justify-center flex rounded-full p-2 h-10 min-w-10 text-white ${
+        className={`pointer-events-none flex-1 bg  shadow-lg shadow-[black] items-center justify-center flex rounded-full p-2 h-10 min-w-10 text-white ${
           userClass[user] ?? userClass.system
         }`}
       >
         <span className="pointer-events-none">{fromMe ? 'U' : 'B'}</span>
       </div>
       <div
-        className={`rounded-md p-2 shadow-lg shadow-[black] ${
+        className={`rounded-md bg p-2 shadow-lg shadow-[black] ${
           message ? cls[user] : cls.invalid
         }`}
         ref={props.innerRef}
       >
-        <span className="text-slate-900">
+        <span className="text-slate-100">
           {message ? (
             <Markdown>{message}</Markdown>
           ) : (

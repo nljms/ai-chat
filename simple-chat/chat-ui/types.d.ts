@@ -11,3 +11,8 @@ export type ChatHistory = {
   room: string;
   messages: ChatMessage[];
 };
+
+export type ChatSession = {
+  sessionId: string;
+  message: string;
+};

@@ -22,7 +22,7 @@ async function* iterableStream(stream: ReadableStream<Uint8Array>) {
  */
 export const getChats = async (chatSessionId: string): Promise<ChatHistory> => {
   // TODO: Use config for base url
-  const response = await fetch(`http://localhost:5001/chat/${chatSessionId}`, {
+  const response = await fetch(`http://localhost:5001/chats/${chatSessionId}`, {
     method: 'get',
   });
 
@@ -42,4 +42,12 @@ export const getChatStreams = async (
   const stream = response.body;
 
   return iterableStream(stream);
+};
+
+export const getChatSessions = async () => {
+  const response = await fetch('http://localhost:5001/chats', {
+    method: 'get',
+  });
+
+  return response.json();
 };

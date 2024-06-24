@@ -1,6 +1,6 @@
 export const variants = {
   primary:
-    'bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded',
+    'animated-background bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white font-bold rounded',
   secondary: 'bg-blue-200 text-blue-500',
   danger: 'bg-red-500 text-white',
   success: 'bg-green-500 text-white',

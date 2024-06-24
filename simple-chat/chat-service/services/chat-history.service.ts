@@ -39,4 +39,13 @@ export const ChatHistoryService = {
       });
     }
   },
+
+  async getChatSessions() {
+    const sessions = await ChatHistoryModel.find();
+
+    return sessions.map((session) => ({
+      sessionId: session.room,
+      message: session.messages[0].message,
+    }));
+  },
 };
