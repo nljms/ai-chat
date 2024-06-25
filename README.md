@@ -69,8 +69,13 @@ bit run chat-ui
 > Note: Whenever the backend service doesn't compile, try to run `bit install && bit run chat-service` to recompile the service. Then afterwards restart the frontend as well.
 ## Demo
 This is how it currently works.
+|First iteration | Current |
+|--|--|
+|<video src="https://github.com/nljms/simple-chat/assets/25510386/51af1c39-c969-48c9-a1cc-fd44dd34437a" alt="1st iteration" />| <video src="https://github.com/nljms/simple-chat/assets/25510386/898381cf-bcc9-45c6-87d4-553426214bbe" alt="latest"/>
 
-https://github.com/nljms/simple-chat/assets/25510386/51af1c39-c969-48c9-a1cc-fd44dd34437a
+
+
+
 
 
 
