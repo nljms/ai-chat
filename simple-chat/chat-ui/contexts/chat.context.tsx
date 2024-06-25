@@ -131,6 +131,7 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
   useEffect(() => {
     const sessionId = searchParams.get('chatSessionId');
     const sessionIdValid = validate(sessionId);
+    getModels();
     if (!sessionIdValid) {
       setSearchParam({ chatSessionId: uuidv4() });
       return;
@@ -138,7 +139,6 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     if (sessionId) {
       setChatSessionId(sessionId);
       getChats(sessionId);
-      getModels();
     }
 
     return () => {
