@@ -1,9 +1,8 @@
-import { forwardRef } from 'react';
 import Markdown from './Markdown.js';
 import { User } from '../types.js';
 
 type BubbleProps = {
-  innerRef?: React.ForwardedRef<HTMLDivElement>;
+  innerRef?: React.RefObject<HTMLDivElement>;
   message: string;
   user: User;
   hidden?: boolean;
@@ -46,7 +45,7 @@ const Bubble = (props: BubbleProps) => {
         <span className="pointer-events-none">{fromMe ? 'U' : 'B'}</span>
       </div>
       <div
-        className={`rounded-md bg p-2 shadow-[black] ${
+        className={`rounded-md overflow-x-scroll bg p-2 shadow-[black] ${
           message ? cls[user] : cls.invalid
         }`}
         ref={props.innerRef}
@@ -59,6 +58,4 @@ const Bubble = (props: BubbleProps) => {
   );
 };
 
-export default forwardRef<HTMLDivElement, BubbleProps>((props, ref) => (
-  <Bubble {...props} innerRef={ref} />
-));
+export default Bubble;

@@ -42,9 +42,11 @@ const ChatContainer = (props: ChatContainerProps) => {
   return (
     <div
       ref={props.innerRef}
-      className="h-screen flex flex-col w-full overflow-y-scroll shadow-black overflow-x-hidden"
+      className="h-screen flex flex-col w-full items-center overflow-y-scroll shadow-black overflow-x-hidden"
     >
-      {props.children}
+      <div className="h-full container mx-auto xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm">
+        {props.children}
+      </div>
     </div>
   );
 };

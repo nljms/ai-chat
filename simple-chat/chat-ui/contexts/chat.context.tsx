@@ -22,7 +22,10 @@ type ChatStore = {
   setError: (data: boolean) => void;
   loading: boolean;
   setLoading: (data: boolean) => void;
-  getChatStreams: (sentMessage: string) => Promise<void>;
+  getChatStreams: (
+    sentMessage: string,
+    callback?: (message: string) => void
+  ) => Promise<void>;
   typingRef: React.MutableRefObject<HTMLDivElement>;
   model: Model;
   selectModel: (key: string, value: string) => void;
@@ -90,7 +93,10 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
    * Fetches event sent streams
    * @param sentMessage
    */
-  const getChatStreams = async (sentMessage: string) => {
+  const getChatStreams = async (
+    sentMessage: string,
+    callback?: (message: string) => void
+  ) => {
     const cHistory: ChatMessage[] = [
       ...chatHistory,
       { message: sentMessage, user: 'user' },
@@ -102,7 +108,11 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     let reply = '';
     for await (const message of streamedReply) {
       reply += message;
+      if (callback) {
+        callback(reply);
+      }
     }
+
     cHistory.push({ message: reply.trim(), user: 'system' });
 
     setChatHistory(cHistory);
@@ -110,7 +120,6 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
   };
 
   const handleSelectModel = (key: string, value: string) => {
-    console.log('key:', key, 'value:', value);
     setModel({ [key]: { values: value } });
     setSelectedModel(value);
   };

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 
 import { Bubble, ChatBar, Container, Dropdown } from '../components/index.js';
@@ -19,12 +19,15 @@ const Home = (props) => {
 
   const chatContainerRef = useRef<HTMLDivElement>();
 
+  const [typingMessage, setTypingMessage] = useState<string>('...');
+
   const store = useChatStore();
 
   useEffect(() => {
     const chatContainer = chatContainerRef.current;
+
     chatContainer.scrollTop = chatContainer.scrollHeight;
-  }, [store.loading]);
+  }, [store.loading, typingMessage]);
 
   if (store.error) {
     return <ErrorPage />;
@@ -39,7 +42,7 @@ const Home = (props) => {
     if (!cleanMessage) return;
 
     helpers.setSubmitting(true);
-    await store.getChatStreams(cleanMessage);
+    await store.getChatStreams(cleanMessage, setTypingMessage);
     helpers.setSubmitting(false);
   };
 
@@ -80,9 +83,8 @@ const Home = (props) => {
               <Bubble
                 hidden={!isSubmitting}
                 key={store.chatSessionId}
-                message="..."
+                message={typingMessage}
                 user="system"
-                innerRef={store.typingRef}
               />
             </div>
           </Container>
