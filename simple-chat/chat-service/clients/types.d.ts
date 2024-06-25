@@ -12,11 +12,15 @@ export type AiClient = {
   stream: (message: string) => Promise<ClientStream>;
 };
 
+export type Event = "receive_message" | "reply_message";
+
 export type CacheMachine = {
   get: (key: string) => Promise<string | null>;
   set: (key: string, value: string) => Promise<void>;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
+  on: (event: Event, callback: (message: T) => void) => void;
+  emit: (event: Event, message: T) => void;
 };
 
 export type Storage = {

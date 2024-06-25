@@ -1,10 +1,11 @@
 import { Schema, model } from "mongoose";
+import { v4 as uuidV4 } from "uuid";
 
 export type ChatHistory = {
   room: string;
   messages: [
     {
-      id: string;
+      id?: string;
       user: string;
       message: string;
       timestamp: Date;
@@ -19,7 +20,10 @@ const ChatHistorySchema = new Schema<ChatHistory>({
   room: String,
   messages: [
     {
-      id: String,
+      id: {
+        type: String,
+        default: uuidV4,
+      },
       user: String,
       message: String,
       timestamp: Date,
@@ -40,5 +44,7 @@ export const ChatHistoryModel = model<ChatHistory>(
   "ChatHistory",
   ChatHistorySchema
 );
+
+export type ChatHistoryModelType = typeof ChatHistoryModel;
 
 export default ChatHistorySchema;

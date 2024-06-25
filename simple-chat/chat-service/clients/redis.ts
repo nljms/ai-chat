@@ -1,5 +1,5 @@
 import { RedisClientType } from "redis";
-import { CacheMachine } from "./types.js";
+import { CacheMachine, Event } from "./types.js";
 
 class RedisClient implements CacheMachine {
   constructor(private readonly client: RedisClientType) {}
@@ -30,6 +30,14 @@ class RedisClient implements CacheMachine {
   public async get(key: string) {
     console.log(`[redis client]: Getting key: ${key}`);
     return this.client.get(key);
+  }
+
+  public on<T>(event: Event, callback: (message: T) => void) {
+    this.client.on(event, callback);
+  }
+
+  public emit<T>(event: Event, message: T) {
+    this.client.emit(event, message);
   }
 }
 

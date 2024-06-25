@@ -1,4 +1,4 @@
-import express, { Response, Request } from "express";
+import express, { Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -6,15 +6,12 @@ import { rateLimit } from "express-rate-limit";
 
 dotenv.config();
 
-import { ChatService } from "./chat-service.js";
-import { SseHeaders } from "./constants/headers.js";
 import { redisClient, mongooseClient } from "./clients/index.js";
-import { Message, eventEmitter } from "./events/messaging.js";
-import { ChatHistoryService } from "./services/chat-history.service.js";
+import { chatsControllerInstance } from "./controllers/index.js";
 
 export async function run() {
   const app = express();
-  const chatService = ChatService.from();
+
   const port = process.env.PORT || 3000;
 
   await Promise.all(
@@ -39,86 +36,18 @@ export async function run() {
    * https://expressjs.com/en/starter/hello-world.html
    */
   app.get("/", async (_, res: Response) => {
-    const greeting = await chatService.getHello();
-    res.send(greeting);
+    res.send({});
   });
-
   app.get("/health", (_, res: Response) => {
     res.send("OK");
   });
-
-  app.get("/chats", async (_, res: Response) => {
-    const chatSessions = await ChatHistoryService.getChatSessions();
-    res.json(chatSessions);
-  });
-
-  app.get("/chats/:chatSessionId", async (req: Request, res: Response) => {
-    const chatSessionId = req.params.chatSessionId;
-
-    if (!chatSessionId) {
-      res.status(400).send("Invalid chat session id");
-      return;
-    }
-
-    const chatHistory = await ChatHistoryService.getChatHistory(chatSessionId);
-
-    if (!chatHistory) {
-      res.json({
-        room: chatSessionId,
-        messages: [],
-      });
-      return;
-    }
-
-    res.json(chatHistory);
-  });
+  app.get("/chats", chatsControllerInstance.getChatSessions);
+  app.get("/chats/:chatSessionId", chatsControllerInstance.getChatHistory);
 
   /**
    * Establishes a server-sent event (SSE) connection with the client
    */
-  app.post("/chat", async (req: Request, res: Response) => {
-    const { chatSessionId, message } = req.body;
-
-    Object.entries(SseHeaders).forEach(([key, value]) => {
-      res.setHeader(key, value);
-    });
-    // flush the headers to establish SSE with client
-    res.flushHeaders();
-
-    eventEmitter.emit<Message>("receive_message", {
-      chatSessionId,
-      message: message,
-      user: "user",
-    });
-
-    const stream = await chatService.sendMessage(
-      chatSessionId,
-      message as string
-    );
-
-    let words = "";
-
-    for await (const chunk of stream) {
-      words += chunk.choices[0]?.delta?.content ?? "";
-      res.write(chunk.choices[0]?.delta?.content ?? "");
-    }
-
-    let timeoutId = setTimeout(() => {
-      res.end(); // terminates SSE session
-      return;
-    }, 2000);
-
-    res.on("close", () => {
-      eventEmitter.emit("reply_message", {
-        chatSessionId,
-        message: words,
-        user: "system",
-      });
-      clearTimeout(timeoutId);
-      console.log("Connection closed");
-      res.end();
-    });
-  });
+  app.post("/chat", chatsControllerInstance.streamChat);
 
   const server = app.listen(port, () => {
     console.log(`🚀  Server ready at: http://localhost:${port}`);
