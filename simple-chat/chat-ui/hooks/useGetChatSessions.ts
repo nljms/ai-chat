@@ -20,7 +20,7 @@ const useGetChatSessions = () => {
     };
 
     fetchChatSessions();
-  }, []);
+  }, [store.loading]);
 
   return store.chatSessions;
 };
