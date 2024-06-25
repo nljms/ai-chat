@@ -1,5 +1,3 @@
-// import Dropdown from './Dropdown.js';
-
 import { animatedBackground } from '../constants/styles.js';
 
 export const AppContainer = (props: React.PropsWithChildren) => {
@@ -44,7 +42,7 @@ const ChatContainer = (props: ChatContainerProps) => {
   return (
     <div
       ref={props.innerRef}
-      className="h-screen flex flex-col w-full overflow-y-scroll shadow-inner inset-5 shadow-black overflow-x-hidden"
+      className="h-screen flex flex-col w-full overflow-y-scroll shadow-black overflow-x-hidden"
     >
       {props.children}
     </div>
