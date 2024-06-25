@@ -45,7 +45,7 @@ const Bubble = (props: BubbleProps) => {
         <span className="pointer-events-none">{fromMe ? 'U' : 'B'}</span>
       </div>
       <div
-        className={`rounded-md overflow-x-scroll bg p-2 shadow-[black] ${
+        className={`rounded-md overflow-x-auto bg p-2 shadow-[black] ${
           message ? cls[user] : cls.invalid
         }`}
         ref={props.innerRef}
