@@ -1,4 +1,4 @@
-import { variants } from '../constants/styles.js';
+import { sizes, variants } from '../constants/styles.js';
 import { ButtonProps, InputProps } from './types.js';
 
 export const Text = (props: InputProps<HTMLInputElement>) => {
@@ -21,10 +21,13 @@ export const Text = (props: InputProps<HTMLInputElement>) => {
 export const Button = (props: ButtonProps) => {
   const { children, onClick, type, disabled } = props;
   const variant = variants[props.variant];
+
+  const size = sizes[props.size] ?? sizes.sm;
+
   return (
     <button
       type={type ?? 'button'}
-      className={`px-10 py-4 ${variant} rounded-md`}
+      className={`px-10 py-4 ${variant} rounded-md ${size}`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -7,6 +7,13 @@ export const variants = {
   transparent: 'bg-inherit text-slate-300',
 };
 
+export const sizes = {
+  xs: 'px-1 py-1 max-w-xs',
+  sm: 'px-4 py-2 max-w-xs',
+  md: 'px-6 py-3 max-w-md',
+  lg: 'px-8 py-4 max-w-lg',
+};
+
 export type Variant =
   | 'primary'
   | 'secondary'

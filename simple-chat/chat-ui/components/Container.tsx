@@ -1,4 +1,7 @@
+import { createPortal } from 'react-dom';
+
 import { animatedBackground } from '../constants/styles.js';
+import ChatSessionDrawer from '../features/ChatSessionDrawer.js';
 
 export const AppContainer = (props: React.PropsWithChildren) => {
   return (
@@ -11,15 +14,30 @@ export const AppContainer = (props: React.PropsWithChildren) => {
 type StickyNavContainerProps = {
   children: React.ReactNode;
   animating?: boolean;
+  showChatList?: boolean;
+  onToggleChatList?: () => void;
 };
 
 export const StickyNavContainer = (props: StickyNavContainerProps) => {
+  const { showChatList, onToggleChatList } = props;
+
   return (
     <div
       className={`${
         props.animating && animatedBackground
       } flex-row-reverse flex justify-between items-center pb-[4px] sticky top-0 shadow-2xl`}
     >
+      {createPortal(
+        <div
+          className={`z-10 fixed h-full w-full top-0 flex items-center justify-center bg-[rgba(14,15,27,0.9)] ${
+            showChatList ? 'block' : 'hidden'
+          }`}
+          tabIndex={100}
+        >
+          <ChatSessionDrawer open={showChatList} onClose={onToggleChatList} />
+        </div>,
+        document.getElementById('modal-root')
+      )}
       <div className="bg-slate-900 w-full">{props.children}</div>
     </div>
   );

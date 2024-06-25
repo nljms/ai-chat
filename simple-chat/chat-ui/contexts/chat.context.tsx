@@ -82,8 +82,6 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
       setChatHistory(chats.messages);
       setLoading(false);
     }, 3000);
-
-    clearImmediate(timeoutId);
   };
 
   const getModels = async () => {

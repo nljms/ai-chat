@@ -20,6 +20,7 @@ const Home = (props) => {
   const chatContainerRef = useRef<HTMLDivElement>();
 
   const [typingMessage, setTypingMessage] = useState<string>('...');
+  const [showChatList, setShowChatList] = useState<boolean>(false);
 
   const store = useChatStore();
 
@@ -58,10 +59,21 @@ const Home = (props) => {
     >
       {({ values, setFieldValue, handleSubmit, isSubmitting }) => (
         <AppContainer>
-          <StickyNavContainer animating={store.loading}>
+          <StickyNavContainer
+            animating={store.loading}
+            showChatList={showChatList}
+            onToggleChatList={() => setShowChatList(!showChatList)}
+          >
             <div className="flex flex-col gap-4 p-4 text-slate-200">
               <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Chat</h1>
+                <h1
+                  className="text-2xl font-bold"
+                  onClick={() => setShowChatList(true)}
+                >
+                  <span className="hover:text-orange-500 text-blue-50 cursor-pointer animate-background">
+                    AI Chat
+                  </span>
+                </h1>
                 <div>
                   <Dropdown
                     optionList={{ groq: store.models }}

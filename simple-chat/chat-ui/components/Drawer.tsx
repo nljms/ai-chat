@@ -6,13 +6,14 @@ type DrawerProps = {
   children?: React.ReactNode;
   open: boolean;
   onClose?: () => void;
+  innerRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const Container = (props: DrawerProps) => {
   return (
-    <div className="md:w-96 w-0 opacity-0 md:opacity-100 md:block hidden">
-      <div className="animated-background h-[70vh] rounded-lg shadow-lg p-[0.9px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
-        <div className="bg-slate-950 w-full h-full rounded-lg flex p-5 overflow-y-scroll scroll-m-9">
+    <div className="w-96 outline-none" tabIndex={100} ref={props.innerRef}>
+      <div className="animated-background h-[70vh] rounded-lg shadow-lg p-[1px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+        <div className="bg-slate-950 w-full h-full rounded-lg flex p-5 overflow-y-auto scroll-m-9">
           {props.children}
         </div>
       </div>
@@ -21,7 +22,11 @@ export const Container = (props: DrawerProps) => {
 };
 
 export const DrawerHeader = (props: React.PropsWithChildren) => {
-  return <h1 className="text-lg text-slate-300 b">{props.children}</h1>;
+  return (
+    <h1 className="text-lg text-slate-300 b flex justify-between items-center p-2">
+      {props.children}
+    </h1>
+  );
 };
 
 type DrawerContentProps = {

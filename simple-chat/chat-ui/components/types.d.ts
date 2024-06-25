@@ -1,5 +1,7 @@
 import { Variant } from '../constants/styles.ts';
 
+export type Size = 'xs' | 'sm' | 'md' | 'lg';
+
 export type InputProps<T> = {
   type?: string;
   variant?: Variant;
@@ -9,6 +11,7 @@ export type InputProps<T> = {
   ref?: React.RefObject<T>;
   placeholder?: string;
   disabled?: boolean;
+  size?: Size;
 };
 
 export type ButtonProps = {
@@ -17,4 +20,5 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   variant: 'primary' | 'secondary';
   disabled?: boolean;
+  size?: Size;
 };
