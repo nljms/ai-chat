@@ -19,6 +19,12 @@ class OpenAiClient implements AiClient {
 
     return clientStream;
   }
+
+  async getModels() {
+    const models = await this.client.models.list();
+
+    return models.data.map((model) => model.id);
+  }
 }
 
 export default OpenAiClient;

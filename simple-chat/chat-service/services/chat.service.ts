@@ -45,6 +45,32 @@ export class ChatService {
   }
 
   /**
+   * Gets all available models from the client.
+   * @returns
+   *
+   * @example ["gpt-3.5-turbo-16k", "gpt-3.5-turbo-16k-v2"]
+   */
+  async getModels() {
+    const cacheId = "models";
+    const cache = await this.cacheMachine.get(cacheId);
+
+    if (!cache) {
+      const models = await this.client.getModels();
+      await this.cacheMachine.set(cacheId, models.join("|"));
+      return models;
+    }
+
+    return cache.split("|");
+  }
+
+  async saveMessages(
+    sessionId: string,
+    message: { user: string; message: string }[]
+  ) {
+    return this.chatRepo.saveMessages(sessionId, message);
+  }
+
+  /**
    * create a new instance of a chat service.
    */
   static fromGroq() {

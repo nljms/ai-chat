@@ -32,6 +32,12 @@ class GroqClient implements AiClient {
       stream: true,
     });
   }
+
+  async getModels() {
+    const models = await this.client.models.list();
+
+    return models.data.map((model) => model.id);
+  }
 }
 
 export default GroqClient;

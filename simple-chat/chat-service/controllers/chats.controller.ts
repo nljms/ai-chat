@@ -22,9 +22,23 @@ class ChatsController {
     res.flushHeaders();
   };
 
-  private handleStream = async (res: Response, stream: ClientStream) => {
+  /**
+   * Bruh... This is a long function. Please refactor me. 😭
+   * Handles the stream from the AI client
+   *
+   * @param res
+   * @param stream
+   * @param payload
+   */
+  private handleStream = async (
+    res: Response,
+    stream: ClientStream,
+    payload: { chatSessionId: string; message: string }
+  ) => {
+    let reply = "";
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content || "";
+      reply += content;
       res.write(content);
     }
 
@@ -33,9 +47,20 @@ class ChatsController {
       return;
     }, 2000);
 
-    res.on("close", () => {
+    res.on("close", async () => {
       clearTimeout(timeoutId);
       console.log("Connection closed");
+
+      await this.chatService.saveMessages(payload.chatSessionId, [
+        {
+          user: "system",
+          message: reply,
+        },
+        {
+          user: "user",
+          message: payload.message,
+        },
+      ]);
       res.end();
     });
   };
@@ -57,7 +82,7 @@ class ChatsController {
 
       this.setupSseHeaders(res);
       const stream = await this.chatService.sendMessage(chatSessionId, message);
-      this.handleStream(res, stream);
+      this.handleStream(res, stream, { chatSessionId, message });
     }
   };
 
@@ -85,6 +110,11 @@ class ChatsController {
   public getChatSessions = async (_: Request, res: Response) => {
     const chatSessions = await this.chatService.getChatSessions();
     res.json(chatSessions);
+  };
+
+  public getModels = async (_: Request, res: Response) => {
+    const models = await this.chatService.getModels();
+    res.json(models);
   };
 }
 

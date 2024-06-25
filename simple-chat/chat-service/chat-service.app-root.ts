@@ -43,6 +43,7 @@ export async function run() {
   });
   app.get("/chats", chatsControllerInstance.getChatSessions);
   app.get("/chats/:chatSessionId", chatsControllerInstance.getChatHistory);
+  app.get("/chats/model", chatsControllerInstance.getModels);
 
   /**
    * Establishes a server-sent event (SSE) connection with the client

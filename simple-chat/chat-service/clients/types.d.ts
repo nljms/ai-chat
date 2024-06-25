@@ -10,6 +10,7 @@ type ClientStream =
 
 export type AiClient = {
   stream: (message: string) => Promise<ClientStream>;
+  getModels: () => Promise<string[]>;
 };
 
 export type Event = "receive_message" | "reply_message";
@@ -17,6 +18,7 @@ export type Event = "receive_message" | "reply_message";
 export type CacheMachine = {
   get: (key: string) => Promise<string | null>;
   set: (key: string, value: string) => Promise<void>;
+  getOrSet: (key: string, value: string) => Promise<string>;
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
   on: (event: Event, callback: (message: T) => void) => void;

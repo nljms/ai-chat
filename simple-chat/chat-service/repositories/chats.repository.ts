@@ -6,6 +6,11 @@ export type ChatRepository = {
     sessionId: string,
     message: { user: string; message: string }
   ) => Promise<void>;
+
+  saveMessages: (
+    sessionId: string,
+    message: { user: string; message: string }[]
+  ) => Promise<void>;
   getChatSessions: () => Promise<{ sessionId: string; message: string }[]>;
 };
 
@@ -41,6 +46,39 @@ class ChatRepo implements ChatRepository {
             timestamp: new Date(),
           },
         ],
+      });
+    }
+  }
+
+  /**
+   *
+   * @param sessionId
+   * @param messages
+   */
+  async saveMessages(
+    sessionId: string,
+    messages: { user: string; message: string }[]
+  ) {
+    const chatHistory = await this.model.findOne({ room: sessionId });
+
+    if (chatHistory) {
+      chatHistory.messages.push(
+        ...messages.map((message) => ({
+          user: message.user,
+          message: message.message.trim(),
+          timestamp: new Date(),
+        }))
+      );
+
+      await chatHistory.save();
+    } else {
+      await this.model.create({
+        room: sessionId,
+        messages: messages.map((message) => ({
+          user: message.user,
+          message: message.message.trim(),
+          timestamp: new Date(),
+        })),
       });
     }
   }
