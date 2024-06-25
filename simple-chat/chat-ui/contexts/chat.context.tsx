@@ -28,6 +28,7 @@ type ChatStore = {
   selectModel: (key: string, value: string) => void;
   selectedModel: string;
   setSearchParam: SetURLSearchParams;
+  models: string[];
 };
 
 const ChatStoreContext = createContext<ChatStore | null>(null);
@@ -58,7 +59,9 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [chatSessions, setChatSessions] = useState<ChatSession[]>([]);
   const [searchParams, setSearchParam] = useSearchParams();
+
   const [model, setModel] = useState({});
+  const [models, setModels] = useState<string[]>([]);
   const [selectedModel, setSelectedModel] = useState('');
   const typingRef = useRef<HTMLDivElement>();
 
@@ -76,6 +79,11 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
       setChatHistory(chats.messages);
       setLoading(false);
     }, 3000);
+  };
+
+  const getModels = async () => {
+    const aiModels = await api.getModels();
+    setModels(aiModels);
   };
 
   /**
@@ -117,6 +125,7 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     if (sessionId) {
       setChatSessionId(sessionId);
       getChats(sessionId);
+      getModels();
     }
 
     return () => {
@@ -143,6 +152,7 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
         selectModel: handleSelectModel,
         selectedModel,
         setSearchParam,
+        models,
       }}
     >
       {props.children}

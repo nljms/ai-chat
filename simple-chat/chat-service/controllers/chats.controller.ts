@@ -53,12 +53,12 @@ class ChatsController {
 
       await this.chatService.saveMessages(payload.chatSessionId, [
         {
-          user: "system",
-          message: reply,
-        },
-        {
           user: "user",
           message: payload.message,
+        },
+        {
+          user: "system",
+          message: reply,
         },
       ]);
       res.end();

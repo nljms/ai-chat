@@ -1,4 +1,4 @@
-import { RedisClientType } from "redis";
+import { RedisClientType, SetOptions } from "redis";
 import { CacheMachine, Event } from "./types.js";
 
 class RedisClient implements CacheMachine {
@@ -22,9 +22,11 @@ class RedisClient implements CacheMachine {
     console.log("[redis client]: Client disconnected...");
   }
 
-  public async set(key: string, value: string) {
+  public async set(key: string, value: string, setOptions?: SetOptions) {
     console.log(`[redis client]: Setting key: ${key} with value: ${value}`);
-    await this.client.set(key, value, { EX: 60 });
+
+    // @ts-ignore - The types are incorrect
+    await this.client.set(key, value, { EX: 60 }, setOptions);
   }
 
   public async get(key: string) {

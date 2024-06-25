@@ -51,3 +51,11 @@ export const getChatSessions = async () => {
 
   return response.json();
 };
+
+export const getModels = async (): Promise<string[]> => {
+  const response = await fetch('http://localhost:5001/chats/models', {
+    method: 'get',
+  });
+
+  return response.json();
+};

@@ -8,13 +8,9 @@ type DropdownProps = {
 };
 
 const Dropdown = (props: DropdownProps) => {
-  const optionList = {
-    groq: ['llama3-8b-8192', 'llama3-70b-8192', 'mixtral-8x7b-32768'],
-  };
-
   const [toggle, setToggle] = useState(false);
 
-  const AIBrands = Object.keys(optionList) || [];
+  const AIBrands = Object.keys(props.optionList) || [];
 
   const toCapitalize = (value) => {
     return value.charAt(0).toUpperCase() + value.slice(1);
@@ -74,7 +70,7 @@ const Dropdown = (props: DropdownProps) => {
                 key={i}
                 className="list-none rounded-md overflow-hidden flex gap-2"
               >
-                {optionList[option].length > 0 ? (
+                {props.optionList[option].length > 0 ? (
                   <div className="w-full">
                     <a
                       href="#"
@@ -95,7 +91,7 @@ const Dropdown = (props: DropdownProps) => {
                         className=" text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="doubleDropdownButton"
                       >
-                        {optionList[option].map((list) => (
+                        {props.optionList[option].map((list) => (
                           <li onClick={() => selectModel(option, list)}>
                             <a
                               href="#"

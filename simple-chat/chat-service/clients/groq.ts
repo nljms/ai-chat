@@ -35,6 +35,9 @@ class GroqClient implements AiClient {
 
   async getModels() {
     const models = await this.client.models.list();
+    const modelIds = models.data.map((model) => model.id);
+
+    console.log("Models from client: ", modelIds);
 
     return models.data.map((model) => model.id);
   }

@@ -59,7 +59,7 @@ const Home = (props) => {
                 <h1 className="text-2xl font-bold">Chat</h1>
                 <div>
                   <Dropdown
-                    optionList={{}}
+                    optionList={{ groq: store.models }}
                     selected={store.selectedModel}
                     onChange={store.selectModel}
                   ></Dropdown>
