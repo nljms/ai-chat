@@ -43,6 +43,8 @@ const Home = (props) => {
 
     helpers.setSubmitting(true);
     await store.getChatStreams(cleanMessage, setTypingMessage);
+
+    setTypingMessage('...');
     helpers.setSubmitting(false);
   };
 

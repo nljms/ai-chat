@@ -12,7 +12,7 @@ type ClientStream =
 type CacheMachineSetOptions = SetOptions;
 
 export type AiClient = {
-  stream: (message: string) => Promise<ClientStream>;
+  stream: (message: string, model?: string) => Promise<ClientStream>;
   getModels: () => Promise<string[]>;
 };
 

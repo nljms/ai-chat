@@ -19,13 +19,13 @@ export class ChatService {
   /**
    * send a message.
    */
-  async sendMessage(sessionId: string, message: string) {
+  async sendMessage(sessionId: string, message: string, model?: string) {
     const cacheId = sessionId;
 
     const cache = (await this.cacheMachine.get(cacheId)) ?? "";
     const cachedMessage = [cache, message].join("|");
     await this.cacheMachine.set(cacheId, cachedMessage);
-    const streams = await this.client.stream(cachedMessage);
+    const streams = await this.client.stream(cachedMessage, model);
 
     return streams;
   }

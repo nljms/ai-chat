@@ -31,11 +31,12 @@ export const getChats = async (chatSessionId: string): Promise<ChatHistory> => {
 
 export const getChatStreams = async (
   chatSessionId: string,
-  message: string
+  message: string,
+  model?: string
 ) => {
   const response = await fetch('http://localhost:5001/chat', {
     method: 'POST',
-    body: JSON.stringify({ chatSessionId, message }),
+    body: JSON.stringify({ chatSessionId, message, model }),
     headers: { 'Content-Type': 'application/json' },
   });
 

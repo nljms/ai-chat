@@ -10,18 +10,22 @@ const groq = new Groq({
 class GroqClient implements AiClient {
   private client = groq;
 
-  async stream(message: string) {
+  async stream(message: string, model?: string) {
+    const aiModel = model || "mixtral-8x7b-32768";
     // TODO: fix typing
     const messages = message
       .split("|")
       .map((content) => ({ role: "user", content })) as any;
 
+    console.log("[groqClient]: using model", model);
+
     return this.client.chat.completions.create({
-      model: "mixtral-8x7b-32768",
+      model: aiModel,
       messages: [
         {
           role: "system",
-          content: "format responses to markdown",
+          content:
+            "format responses to markdown, but do not mention I asked for it.",
         },
         ...messages,
       ],

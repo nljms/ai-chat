@@ -78,10 +78,14 @@ class ChatsController {
 
   public streamChat = async (req: Request, res: Response) => {
     {
-      const { chatSessionId, message } = req.body;
+      const { chatSessionId, message, model } = req.body;
 
       this.setupSseHeaders(res);
-      const stream = await this.chatService.sendMessage(chatSessionId, message);
+      const stream = await this.chatService.sendMessage(
+        chatSessionId,
+        message,
+        model
+      );
       this.handleStream(res, stream, { chatSessionId, message });
     }
   };

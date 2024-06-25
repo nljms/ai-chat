@@ -82,6 +82,8 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
       setChatHistory(chats.messages);
       setLoading(false);
     }, 3000);
+
+    clearImmediate(timeoutId);
   };
 
   const getModels = async () => {
@@ -103,7 +105,11 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     ];
     setLoading(true);
     setChatHistory(cHistory);
-    const streamedReply = await api.getChatStreams(chatSessionId, sentMessage);
+    const streamedReply = await api.getChatStreams(
+      chatSessionId,
+      sentMessage,
+      selectedModel
+    );
 
     let reply = '';
     for await (const message of streamedReply) {
