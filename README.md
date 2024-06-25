@@ -37,6 +37,13 @@ This project used [@teambit/bvm](https://bit.dev/) (bit) for bootstrapping the m
 
 
 ## Up and running
+- Add environment variables
+```bash
+# Add .env at the root folder
+OPENAI_API_KEY=xxx
+GROQ_API_KEY=xxx
+```
+
 - Install dependencies
 ```bash
 bit install
@@ -48,7 +55,7 @@ bit app list # should show 2 apps (chat-ui and chat-service)
 - Run compose file
 ```bash
 docker-compose up # -d (dettached mode)
-# down services
+# turn off services
 docker-compose down
 ```
 - Run the application
@@ -58,6 +65,8 @@ bit run chat-service
 # frontend
 bit run chat-ui
 ```
+
+> Note: Whenever the backend service doesn't compile, try to run `bit install && bit run chat-service` to recompile the service. Then afterwards restart the frontend as well.
 ## Demo
 This is how it currently works.
 
