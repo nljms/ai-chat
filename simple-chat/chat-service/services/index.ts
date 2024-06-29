@@ -1,5 +1,3 @@
-export * from "./chat-history.service.js";
-
 import { ChatService } from "./chat.service.js";
 
 export const groqChatService = ChatService.fromGroq();

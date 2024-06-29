@@ -3,7 +3,7 @@ import img from '../assets/404.svg';
 
 const NotFoundPage = () => {
   return (
-    <Container>
+    <Container innerRef={null}>
       <div className="flex flex-col items-center justify-center h-full w-full">
         <img
           src={img}
