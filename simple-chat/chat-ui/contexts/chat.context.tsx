@@ -103,24 +103,30 @@ export const ChatStoreProvider = (props: React.PropsWithChildren) => {
     ];
     setLoading(true);
     setChatHistory(cHistory);
-    const streamedReply = await api.getChatStreams(
-      chatSessionId,
-      sentMessage,
-      selectedModel
-    );
 
-    let reply = '';
-    for await (const message of streamedReply) {
-      reply += message;
-      if (callback) {
-        callback(reply);
+    try {
+      const streamedReply = await api.getChatStreams(
+        chatSessionId,
+        sentMessage,
+        selectedModel
+      );
+
+      let reply = '';
+      for await (const message of streamedReply) {
+        reply += message;
+        if (callback) {
+          callback(reply);
+        }
       }
+
+      cHistory.push({ message: reply.trim(), user: 'system' });
+
+      setChatHistory(cHistory);
+      setLoading(false);
+    } catch (e) {
+      console.log('Error:', e);
+      setLoading(false);
     }
-
-    cHistory.push({ message: reply.trim(), user: 'system' });
-
-    setChatHistory(cHistory);
-    setLoading(false);
   };
 
   const handleSelectModel = (key: string, value: string) => {
